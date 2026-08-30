@@ -110,10 +110,10 @@
               <p>Небольшая сцена из будущего мультфильма о приключениях двух лучших друзей.</p>
             </div>
             <div class="animation-slot__screen">
-              <video controls playsinline preload="metadata" aria-label="Анимация с Лучиком и Кузей">
-                <source src="assets/video/luchik-kuzya-animation.mp4" type="video/mp4">
-                Ваш браузер не поддерживает воспроизведение видео.
-              </video>
+              <button class="animation-play" id="open-animation" type="button" aria-label="Открыть анимацию с Лучиком и Кузей">
+                <span aria-hidden="true">▶</span>
+                <small>Смотреть</small>
+              </button>
             </div>
           </article>
         </div>
@@ -124,6 +124,17 @@
       <button class="lightbox__close" type="button" aria-label="Закрыть фотографию">×</button>
       <img id="lightbox-image" alt="">
       <p id="lightbox-caption"></p>
+    </dialog>
+
+    <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-dialog-title">
+      <div class="video-dialog__header">
+        <h2 id="video-dialog-title">Лучик и Кузя оживают</h2>
+        <button class="video-dialog__close" type="button" aria-label="Закрыть видео">×</button>
+      </div>
+      <video id="story-video" controls playsinline preload="metadata">
+        <source src="assets/video/luchik-kuzya-animation.mp4" type="video/mp4">
+        Ваш браузер не поддерживает воспроизведение видео.
+      </video>
     </dialog>
 
     <footer>

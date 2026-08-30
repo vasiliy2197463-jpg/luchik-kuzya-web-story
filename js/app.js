@@ -59,3 +59,25 @@ lightboxClose.addEventListener("click", () => lightbox.close());
 lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();
 });
+
+const openAnimation = document.querySelector("#open-animation");
+const videoDialog = document.querySelector("#video-dialog");
+const storyVideo = document.querySelector("#story-video");
+const closeAnimation = document.querySelector(".video-dialog__close");
+
+openAnimation.addEventListener("click", () => {
+  videoDialog.showModal();
+  storyVideo.play().catch(() => {});
+});
+
+function closeVideo() {
+  storyVideo.pause();
+  videoDialog.close();
+}
+
+closeAnimation.addEventListener("click", closeVideo);
+videoDialog.addEventListener("click", (event) => {
+  if (event.target === videoDialog) closeVideo();
+});
+
+videoDialog.addEventListener("close", () => storyVideo.pause());
