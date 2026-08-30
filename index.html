@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Небольшая интерактивная история о дружбе котов Лучика и Кузи.">
+    <title>Лучик и Кузя — история дружбы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="logo" href="#top">Лучик & Кузя</a>
+        <a class="nav__link" href="#story">История</a>
+      </nav>
+
+      <div class="hero__content" id="top">
+        <p class="eyebrow">Маленькая интерактивная история</p>
+        <h1>Настоящая дружба начинается с одного шага навстречу</h1>
+        <p class="hero__text">
+          Лучик — любопытный рыжий кот, а Кузя — спокойный вислоухий друг.
+          Вместе даже самый обычный день превращается в приключение.
+        </p>
+        <a class="button" href="#story">Начать историю</a>
+      </div>
+
+      <div class="cats" aria-hidden="true">
+        <div class="cat cat--orange"><span>Лучик</span></div>
+        <div class="cat cat--dark"><span>Кузя</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="story" id="story" aria-labelledby="story-title">
+        <div class="section-heading">
+          <p class="eyebrow">Три короткие главы</p>
+          <h2 id="story-title">Один день двух друзей</h2>
+        </div>
+
+        <div class="story__grid">
+          <article class="card card--active" data-step="1">
+            <span class="card__number">01</span>
+            <h3>Встреча у окна</h3>
+            <p>Лучик замечает Кузю во дворе и зовёт его играть.</p>
+          </article>
+          <article class="card" data-step="2">
+            <span class="card__number">02</span>
+            <h3>Весёлая погоня</h3>
+            <p>Друзья носятся вокруг дерева и прячутся за цветами.</p>
+          </article>
+          <article class="card" data-step="3">
+            <span class="card__number">03</span>
+            <h3>Домой вместе</h3>
+            <p>После игры они возвращаются домой и делят уютный вечер.</p>
+          </article>
+        </div>
+
+        <div class="controls" aria-label="Управление историей">
+          <button class="button button--secondary" id="previous" type="button">Назад</button>
+          <p class="controls__status" id="status" aria-live="polite">Глава 1 из 3</p>
+          <button class="button" id="next" type="button">Дальше</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Учебный проект о дружбе, аккуратном коде и внимании к деталям.</p>
+    </footer>
+  </body>
+</html>
