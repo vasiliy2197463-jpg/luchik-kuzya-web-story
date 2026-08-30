@@ -12,7 +12,10 @@
     <header class="hero">
       <nav class="nav" aria-label="Основная навигация">
         <a class="logo" href="#top">Лучик & Кузя</a>
-        <a class="nav__link" href="#story">История</a>
+        <div class="nav__links">
+          <a class="nav__link" href="#story">История</a>
+          <a class="nav__link" href="#gallery">Фотоглава</a>
+        </div>
       </nav>
 
       <div class="hero__content" id="top">
@@ -62,7 +65,61 @@
           <button class="button" id="next" type="button">Дальше</button>
         </div>
       </section>
+
+      <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+        <div class="gallery-section__inner">
+          <div class="section-heading">
+            <p class="eyebrow">Глава 4 · Настоящие моменты</p>
+            <h2 id="gallery-title">Фотоистории Лучика и Кузи</h2>
+            <p class="gallery-section__lead">
+              Фотографии из первых проектов собраны в одну живую главу. Выбирай тему —
+              коллаж перестроится сам.
+            </p>
+          </div>
+
+          <div class="filters" role="group" aria-label="Фильтр фотографий">
+            <button class="filter filter--active" type="button" data-filter="all" aria-pressed="true">Все моменты</button>
+            <button class="filter" type="button" data-filter="food" aria-pressed="false">Еда</button>
+            <button class="filter" type="button" data-filter="play" aria-pressed="false">Игры</button>
+            <button class="filter" type="button" data-filter="walk" aria-pressed="false">Прогулки</button>
+          </div>
+
+          <div class="photo-grid" aria-live="polite">
+            <figure class="photo photo--wide" data-category="walk"><img src="assets/gallery/01-luchik-forest.jpg" alt="Лучик среди бумажных ёлочек" loading="lazy"><figcaption>Маленький лес дома</figcaption></figure>
+            <figure class="photo photo--tall" data-category="play"><img src="assets/gallery/02-friends-play.jpg" alt="Лучик и Кузя играют вместе" loading="lazy"><figcaption>Дружеская борьба</figcaption></figure>
+            <figure class="photo" data-category="food"><img src="assets/gallery/03-cat-grass.jpg" alt="Кот рядом с выращенной травой" loading="lazy"><figcaption>Полезное угощение</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/04-play-tunnel.jpg" alt="Кот играет в туннеле" loading="lazy"><figcaption>Игровой туннель</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/05-hide-and-seek.jpg" alt="Лучик прячется под ковриком" loading="lazy"><figcaption>Идеальное укрытие</figcaption></figure>
+            <figure class="photo photo--tall" data-category="walk"><img src="assets/gallery/06-city-walk.jpg" alt="Лучик гуляет на поводке" loading="lazy"><figcaption>Большая прогулка</figcaption></figure>
+            <figure class="photo photo--wide" data-category="walk"><img src="assets/gallery/07-window-watch.jpg" alt="Три кота смотрят в открытое окно" loading="lazy"><figcaption>Наблюдательный пункт</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/08-cardboard-house.jpg" alt="Лучик в картонном домике" loading="lazy"><figcaption>Домик своими лапами</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/09-kuzya-rest.jpg" alt="Кузя отдыхает на кровати" loading="lazy"><figcaption>Минутка отдыха</figcaption></figure>
+            <figure class="photo photo--wide" data-category="food"><img src="assets/gallery/10-dinner.jpg" alt="Лучик и Кузя едят рядом" loading="lazy"><figcaption>Ужин лучших друзей</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/11-luchik-pot.jpg" alt="Лучик сидит в большой кастрюле" loading="lazy"><figcaption>Нашёл новое место</figcaption></figure>
+            <figure class="photo" data-category="walk"><img src="assets/gallery/12-recovery.jpg" alt="Кот восстанавливается после лечения" loading="lazy"><figcaption>Снова готов к приключениям</figcaption></figure>
+            <figure class="photo" data-category="food"><img src="assets/gallery/13-luchik-birthday.jpg" alt="Лучик в праздничном нагруднике" loading="lazy"><figcaption>Праздничное меню</figcaption></figure>
+            <figure class="photo" data-category="walk"><img src="assets/gallery/14-luchik-portrait.jpg" alt="Лучик с чёрной бабочкой" loading="lazy"><figcaption>Лучик готов выходить</figcaption></figure>
+            <figure class="photo" data-category="walk"><img src="assets/gallery/15-kuzya-portrait.jpg" alt="Портрет Кузи" loading="lazy"><figcaption>Серьёзный Кузя</figcaption></figure>
+            <figure class="photo" data-category="play"><img src="assets/gallery/16-kuzya-bow.jpg" alt="Кузя с чёрной бабочкой" loading="lazy"><figcaption>Кузя при параде</figcaption></figure>
+          </div>
+
+          <article class="animation-slot" id="animation" aria-labelledby="animation-title">
+            <div>
+              <p class="eyebrow">Следующее обновление</p>
+              <h3 id="animation-title">Здесь появится мультфильм</h3>
+              <p>Блок уже подготовлен. Когда ты пришлёшь анимацию, мы добавим её сюда без переделки страницы.</p>
+            </div>
+            <div class="animation-slot__screen" aria-hidden="true"><span>▶</span></div>
+          </article>
+        </div>
+      </section>
     </main>
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="lightbox__close" type="button" aria-label="Закрыть фотографию">×</button>
+      <img id="lightbox-image" alt="">
+      <p id="lightbox-caption"></p>
+    </dialog>
 
     <footer>
       <p>Учебный проект о дружбе, аккуратном коде и внимании к деталям.</p>
