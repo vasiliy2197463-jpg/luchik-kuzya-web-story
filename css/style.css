@@ -57,6 +57,10 @@ a {
   gap: 22px;
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .logo {
   font-weight: 850;
   text-decoration: none;
@@ -188,9 +192,44 @@ h1 {
   transform: scale(0.88);
 }
 
+.cat--vitalik {
+  position: relative;
+  color: #252d39;
+  background: linear-gradient(120deg, #3c4654, #171d27);
+}
+
 .cat span {
+  position: relative;
+  z-index: 2;
   color: white;
+  font-size: clamp(0.72rem, 1.3vw, 1rem);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.cat__tail {
+  width: 34%;
+  height: 13%;
+  position: absolute;
+  right: -20%;
+  bottom: 13%;
+  z-index: 1;
+  border-radius: 0 999px 999px 0;
+  transform: rotate(-17deg);
+  transform-origin: left center;
+}
+
+.cat--orange .cat__tail {
+  border-right: 22px solid #fff3df;
+  background: repeating-linear-gradient(90deg, #e98337 0 17px, #ce5e22 18px 25px);
+}
+
+.cat--dark .cat__tail {
+  border-right: 20px solid #f4eee4;
+  background: linear-gradient(90deg, #2d3542, #1d2634);
+}
+
+.cat--vitalik .cat__tail {
+  background: linear-gradient(90deg, #343d4a, #171d27);
 }
 
 .story {
@@ -263,6 +302,83 @@ h2 {
   font-weight: 750;
 }
 
+.bandits {
+  padding-block: clamp(90px, 10vw, 130px);
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255, 210, 124, 0.42), transparent 24rem),
+    var(--paper);
+}
+
+.bandits__inner {
+  width: min(1170px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.bandits__title {
+  width: max-content;
+  position: relative;
+  margin-bottom: clamp(70px, 8vw, 100px);
+  padding-bottom: 20px;
+  color: var(--ink);
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+}
+
+.bandits__title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 999px;
+  background: var(--orange);
+}
+
+.bandits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 300px));
+  gap: clamp(34px, 6vw, 78px);
+  justify-content: center;
+}
+
+.bandit-card {
+  text-align: center;
+}
+
+.bandit-card__frame {
+  overflow: hidden;
+  aspect-ratio: 350 / 457;
+  border: 6px solid #f3b376;
+  border-radius: 22px;
+  background: #eadfd2;
+  box-shadow: var(--shadow);
+  cursor: url("../assets/paw-cursor.svg") 16 16, default;
+}
+
+.bandit-card__frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.bandit-card h3 {
+  margin: 34px 0 12px;
+  color: var(--ink);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.bandit-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+}
+
 .gallery-section {
   padding-block: 110px;
   background: var(--cream);
@@ -321,6 +437,12 @@ h2 {
   gap: 14px;
 }
 
+/* Заставка выбора скрыта по умолчанию и появляется только на узком экране,
+   пока пользователь ещё не выбрал категорию фотографий. */
+.gallery-choice {
+  display: none;
+}
+
 .photo {
   overflow: hidden;
   position: relative;
@@ -369,25 +491,89 @@ h2 {
 }
 
 .animation-slot {
-  display: grid;
-  grid-template-columns: 1fr minmax(260px, 0.7fr);
-  gap: 35px;
-  align-items: center;
   margin-top: 70px;
   border-radius: 30px;
   padding: clamp(24px, 5vw, 55px);
-  color: white;
-  background: var(--blue);
+  color: var(--ink);
+  background: var(--yellow);
 }
 
 .animation-slot h3 {
-  margin-bottom: 15px;
+  margin: 0 0 30px;
   font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 1.05;
+  text-align: center;
 }
 
-.animation-slot p:not(.eyebrow) {
-  color: #c9d1dc;
+.animation-carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(10px, 2vw, 22px);
+  align-items: center;
+}
+
+.animation-carousel__viewport {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.animation-carousel__track {
+  display: flex;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animation-slide {
+  min-width: 100%;
+}
+
+.animation-slide h4 {
+  margin: 18px 0 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  text-align: center;
+}
+
+.animation-carousel__arrow {
+  width: clamp(42px, 5vw, 54px);
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  background: var(--ink);
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.animation-carousel__arrow:hover,
+.animation-carousel__arrow:focus-visible {
+  background: var(--orange);
+  transform: scale(1.08);
+}
+
+.animation-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.animation-carousel__dot {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(31, 35, 40, 0.32);
+  cursor: pointer;
+}
+
+.animation-carousel__dot--active {
+  width: 32px;
+  border-radius: 999px;
+  background: var(--orange);
 }
 
 .animation-slot__screen {
@@ -397,6 +583,10 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 22px;
   background: linear-gradient(135deg, rgba(232, 121, 45, 0.8), rgba(255, 213, 158, 0.25));
+}
+
+.animation-slot__screen--vitalik {
+  background: linear-gradient(135deg, rgba(42, 49, 61, 0.92), rgba(232, 121, 45, 0.48));
 }
 
 .animation-play {
@@ -542,8 +732,166 @@ footer {
   text-align: center;
 }
 
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.footer-socials__item {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: transparent;
+  opacity: 0.58;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.footer-socials__item:hover {
+  transform: translateY(-3px);
+  opacity: 0.82;
+}
+
+.footer-socials__item svg {
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.footer-socials__item path {
+  stroke: none;
+}
+
+.footer-socials__dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-socials__item[aria-label="Instagram"] rect,
+.footer-socials__item[aria-label="Instagram"] circle:not(.footer-socials__dot) {
+  fill: none;
+  stroke: currentColor;
+}
+
 footer p {
   margin: 0;
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding-block: 30px;
+  }
+
+  .footer-socials__item {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .nav,
+  .hero__content,
+  .story,
+  .gallery-section__inner {
+    width: min(1280px, calc(100% - 80px));
+  }
+
+  .bandits__inner {
+    width: min(1280px, calc(100% - 80px));
+  }
+}
+
+@media (max-width: 1200px) {
+  .cats {
+    right: -35px;
+    gap: 14px;
+  }
+
+  .cat {
+    width: clamp(135px, 17vw, 215px);
+  }
+
+  .cat::before,
+  .cat::after {
+    border-right-width: 30px;
+    border-bottom-width: 54px;
+    border-left-width: 30px;
+    transform: translate(-45px, -126px) rotate(-16deg);
+  }
+
+  .cat::after {
+    transform: translate(45px, -126px) rotate(16deg);
+  }
+
+  .cat--orange .cat__tail,
+  .cat--dark .cat__tail {
+    border-right-width: 17px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero__content {
+    padding-top: 100px;
+  }
+
+  .hero__text {
+    max-width: 540px;
+  }
+
+  .story,
+  .gallery-section {
+    padding-block: 90px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cat::before,
+  .cat::after {
+    border-right-width: 25px;
+    border-bottom-width: 44px;
+    border-left-width: 25px;
+    transform: translate(-38px, -108px) rotate(-15deg);
+  }
+
+  .cat::after {
+    transform: translate(38px, -108px) rotate(15deg);
+  }
+
+  .cat--orange .cat__tail,
+  .cat--dark .cat__tail {
+    border-right-width: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .cat::before,
+  .cat::after {
+    border-right-width: 21px;
+    border-bottom-width: 37px;
+    border-left-width: 21px;
+    transform: translate(-32px, -96px) rotate(-14deg);
+  }
+
+  .cat::after {
+    transform: translate(32px, -96px) rotate(14deg);
+  }
+
+  .cat--orange .cat__tail,
+  .cat--dark .cat__tail {
+    border-right-width: 12px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -557,11 +905,50 @@ footer p {
 
   .cats {
     right: 50%;
+    gap: 12px;
     transform: translateX(50%);
+  }
+
+  .cat {
+    width: clamp(115px, 27vw, 190px);
+  }
+
+  .cat::before,
+  .cat::after {
+    border-right-width: 18px;
+    border-bottom-width: 32px;
+    border-left-width: 18px;
+    transform: translate(-28px, -88px) rotate(-13deg);
+  }
+
+  .cat::after {
+    transform: translate(28px, -88px) rotate(13deg);
+  }
+
+  .cat--orange .cat__tail,
+  .cat--dark .cat__tail {
+    border-right-width: 10px;
   }
 
   .story__grid {
     grid-template-columns: 1fr;
+  }
+
+  .bandits__grid {
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    overflow-x: auto;
+    padding: 10px 10px 28px;
+    margin-inline: -10px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .bandits__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bandit-card {
+    scroll-snap-align: center;
   }
 
   .photo-grid {
@@ -582,10 +969,115 @@ footer p {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .nav {
+    position: relative;
+    z-index: 20;
+  }
+
+  .menu-toggle {
+    width: 46px;
+    height: 42px;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+    border: 0;
+    border-radius: 14px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 8px 22px rgba(75, 48, 30, 0.13);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 23px;
+    height: 3px;
+    display: block;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .menu-toggle span:nth-child(2) {
+    background: var(--orange);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
   .nav__links {
-    gap: 12px;
-    font-size: 0.88rem;
+    min-width: 190px;
+    display: grid;
+    gap: 4px;
+    position: absolute;
+    top: 74px;
+    right: 0;
+    border: 1px solid rgba(39, 35, 31, 0.1);
+    border-radius: 18px;
+    padding: 10px;
+    background: rgba(255, 253, 248, 0.96);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 180ms ease, transform 180ms ease;
+    backdrop-filter: blur(12px);
+  }
+
+  .nav__links.nav__links--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .nav__link {
+    border-radius: 12px;
+    padding: 10px 12px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav__link:hover,
+  .nav__link:focus-visible {
+    color: white;
+    background: var(--orange);
+  }
+
+  .bandits__inner {
+    width: min(100% - 28px, 1170px);
+  }
+
+  .bandits__grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(230px, 72vw);
+    grid-template-columns: none;
+  }
+
+  .cat::before,
+  .cat::after {
+    border-right-width: 16px;
+    border-bottom-width: 28px;
+    border-left-width: 16px;
+    transform: translate(-25px, -82px) rotate(-12deg);
+  }
+
+  .cat::after {
+    transform: translate(25px, -82px) rotate(12deg);
+  }
+
+  .cat--orange .cat__tail,
+  .cat--dark .cat__tail {
+    border-right-width: 8px;
   }
 
   .photo-grid {
@@ -599,6 +1091,258 @@ footer p {
 
   .photo--tall {
     grid-row: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .filters [data-filter="all"] {
+    display: none;
+  }
+
+  /* Пока показана заставка, строка сетки должна принимать её настоящую
+     высоту. Иначе высокая картинка выходит из строки и перекрывает видео. */
+  .photo-grid--awaiting {
+    grid-auto-rows: auto;
+  }
+
+  .photo-grid--awaiting .gallery-choice {
+    position: relative;
+    grid-column: 1 / -1;
+    display: block;
+    overflow: hidden;
+    height: clamp(440px, 128vw, 720px);
+    min-height: 0;
+    margin: 0;
+    border-radius: 26px;
+    background: var(--cream);
+    box-shadow: var(--shadow);
+  }
+
+  .gallery-choice img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: block;
+    object-fit: cover;
+    opacity: 0.84;
+  }
+
+  .gallery-choice::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0 0 48%;
+    background: rgba(255, 246, 231, 0.18);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .story__grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 78vw);
+    grid-template-columns: none;
+    overflow-x: auto;
+    padding: 10px 8px 24px;
+    margin-inline: -8px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .story__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story__grid .card {
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav,
+  .hero__content,
+  .story,
+  .gallery-section__inner {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .hero {
+    min-height: 780px;
+  }
+
+  .hero__content {
+    padding-top: 55px;
+  }
+
+  h1 {
+    font-size: clamp(2.45rem, 14vw, 4rem);
+  }
+
+  .controls {
+    gap: 10px;
+  }
+
+  .controls .button {
+    min-height: 44px;
+    padding-inline: 17px;
+  }
+
+  .animation-slot {
+    border-radius: 22px;
+    padding: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 145px;
+    line-height: 1.1;
+  }
+
+  .story,
+  .gallery-section,
+  .bandits {
+    padding-block: 72px;
+  }
+
+  .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .story__grid {
+    grid-auto-columns: minmax(245px, 86vw);
+  }
+}
+
+@media (max-width: 375px) {
+  .nav {
+    padding-block: 16px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 40px;
+  }
+
+  .cat {
+    width: clamp(92px, 29vw, 118px);
+  }
+
+  .controls__status {
+    min-width: 82px;
+    font-size: 0.86rem;
+  }
+}
+
+/* Независимый слайдер карточек «Бандиты». Его классы не пересекаются
+   со слайдером видео .animation-carousel. */
+.bandits-carousel {
+  position: relative;
+}
+
+.bandits-carousel__viewport {
+  min-width: 0;
+}
+
+.bandits-carousel__arrow,
+.bandits-carousel__dots {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bandits-carousel {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .bandits-carousel__viewport {
+    overflow: hidden;
+    border-radius: 26px;
+  }
+
+  .bandits-carousel .bandits-carousel__track {
+    display: flex;
+    grid-auto-flow: initial;
+    grid-auto-columns: initial;
+    grid-template-columns: none;
+    gap: 0;
+    justify-content: initial;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    scroll-snap-type: none;
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .bandits-carousel .bandit-card {
+    min-width: 100%;
+    padding-inline: clamp(8px, 4vw, 38px);
+    scroll-snap-align: none;
+  }
+
+  .bandits-carousel__arrow {
+    width: 44px;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    border: 0;
+    border-radius: 50%;
+    padding: 0 0 4px;
+    color: white;
+    background: var(--ink);
+    font: inherit;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .bandits-carousel__arrow:hover,
+  .bandits-carousel__arrow:focus-visible {
+    background: var(--orange);
+  }
+
+  .bandits-carousel__dots {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .bandits-carousel__dot {
+    width: 11px;
+    height: 11px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    background: rgba(31, 35, 40, 0.3);
+    cursor: pointer;
+  }
+
+  .bandits-carousel__dot--active {
+    width: 30px;
+    border-radius: 999px;
+    background: var(--orange);
+  }
+}
+
+@media (max-width: 480px) {
+  .bandits-carousel {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 5px;
+  }
+
+  .bandits-carousel__arrow {
+    width: 36px;
+    font-size: 1.65rem;
+  }
+
+  .bandits-carousel .bandit-card {
+    padding-inline: 5px;
   }
 }
 

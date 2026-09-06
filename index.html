@@ -11,9 +11,15 @@
   <body>
     <header class="hero">
       <nav class="nav" aria-label="Основная навигация">
-        <a class="logo" href="#top">Лучик & Кузя</a>
-        <div class="nav__links">
+        <a class="logo" href="#top">Лучик &amp; Кузя</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav__links" id="main-menu">
           <a class="nav__link" href="#story">История</a>
+          <a class="nav__link" href="#bandits">Бандиты</a>
           <a class="nav__link" href="#gallery">Фотоглава</a>
         </div>
       </nav>
@@ -22,47 +28,110 @@
         <p class="eyebrow">Маленькая интерактивная история</p>
         <h1>Настоящая дружба начинается с одного шага навстречу</h1>
         <p class="hero__text">
-          Лучик — любопытный рыжий кот, а Кузя — спокойный вислоухий друг.
-          Вместе даже самый обычный день превращается в приключение.
+          Лучик — любопытный рыжий кот, Кузя — спокойный вислоухий друг,
+          а Виталик — большой тёмный добряк. Вместе даже самый обычный день
+          превращается в приключение.
         </p>
         <a class="button" href="#story">Начать историю</a>
       </div>
 
       <div class="cats" aria-hidden="true">
-        <div class="cat cat--orange"><span>Лучик</span></div>
-        <div class="cat cat--dark"><span>Кузя</span></div>
+        <div class="cat cat--orange"><i class="cat__tail"></i><span>Лучик</span></div>
+        <div class="cat cat--dark"><i class="cat__tail"></i><span>Кузя</span></div>
+        <div class="cat cat--vitalik"><i class="cat__tail"></i><span>Виталик</span></div>
       </div>
     </header>
 
     <main>
       <section class="story" id="story" aria-labelledby="story-title">
         <div class="section-heading">
-          <p class="eyebrow">Три короткие главы</p>
+          <p class="eyebrow">Шесть коротких глав</p>
           <h2 id="story-title">Один день двух друзей</h2>
         </div>
 
         <div class="story__grid">
           <article class="card card--active" data-step="1">
             <span class="card__number">01</span>
-            <h3>Встреча у окна</h3>
-            <p>Лучик замечает Кузю во дворе и зовёт его играть.</p>
+            <h3>Доброе утро</h3>
+            <p>Лучик просыпается в светлой комнате и готовится к новому дню.</p>
           </article>
           <article class="card" data-step="2">
             <span class="card__number">02</span>
-            <h3>Весёлая погоня</h3>
-            <p>Друзья носятся вокруг дерева и прячутся за цветами.</p>
+            <h3>Встреча у окна</h3>
+            <p>Лучик замечает Кузю во дворе и радостно приветствует друга.</p>
           </article>
           <article class="card" data-step="3">
             <span class="card__number">03</span>
+            <h3>Скорее на улицу</h3>
+            <p>Лучик бежит через комнату, открывает дверь и выходит к Кузе.</p>
+          </article>
+          <article class="card" data-step="4">
+            <span class="card__number">04</span>
+            <h3>Весёлая погоня</h3>
+            <p>Друзья носятся вокруг дерева и прячутся за цветами.</p>
+          </article>
+          <article class="card" data-step="5">
+            <span class="card__number">05</span>
             <h3>Домой вместе</h3>
-            <p>После игры они возвращаются домой и делят уютный вечер.</p>
+            <p>Лучик приглашает Кузю внутрь, и друзья заходят в дом.</p>
+          </article>
+          <article class="card" data-step="6">
+            <span class="card__number">06</span>
+            <h3>Уютный вечер</h3>
+            <p>После ужина коты устраиваются у окна и отдыхают рядом.</p>
           </article>
         </div>
 
         <div class="controls" aria-label="Управление историей">
           <button class="button button--secondary" id="previous" type="button">Назад</button>
-          <p class="controls__status" id="status" aria-live="polite">Глава 1 из 3</p>
+          <p class="controls__status" id="status" aria-live="polite">Глава 1 из 6</p>
           <button class="button" id="next" type="button">Дальше</button>
+        </div>
+      </section>
+
+      <section class="bandits" id="bandits" aria-labelledby="bandits-title">
+        <div class="bandits__inner">
+          <h2 class="bandits__title" id="bandits-title">Бандиты</h2>
+
+          <div class="bandits-carousel" aria-label="Персонажи Бандитов">
+            <button class="bandits-carousel__arrow bandits-carousel__arrow--prev" type="button" aria-label="Предыдущий персонаж">‹</button>
+
+            <div class="bandits-carousel__viewport">
+              <div class="bandits__grid bandits-carousel__track">
+                <article class="bandit-card">
+              <div class="bandit-card__frame">
+                <img src="assets/bandits/luchik.JPG" alt="Лучик в чёрной бабочке на зелёном кресле" loading="lazy">
+              </div>
+              <h3>Лучик</h3>
+              <p>Мастер демонтажа</p>
+                </article>
+
+                <article class="bandit-card">
+              <div class="bandit-card__frame">
+                <img src="assets/bandits/kuzya.JPG" alt="Кузя в чёрной бабочке на зелёном кресле" loading="lazy">
+              </div>
+              <h3>Кузя</h3>
+              <p>Посол из Британии</p>
+                </article>
+
+                <article class="bandit-card">
+              <div class="bandit-card__frame">
+                <img src="assets/bandits/vitalik.JPG" alt="Виталик в чёрной бабочке на зелёном кресле" loading="lazy">
+              </div>
+              <h3>Виталик</h3>
+              <p>Пожиратель</p>
+                </article>
+              </div>
+            </div>
+
+            <button class="bandits-carousel__arrow bandits-carousel__arrow--next" type="button" aria-label="Следующий персонаж">›</button>
+          </div>
+
+          <div class="bandits-carousel__dots" role="group" aria-label="Выбор персонажа">
+            <button class="bandits-carousel__dot bandits-carousel__dot--active" type="button" aria-label="Показать Лучика" aria-pressed="true"></button>
+            <button class="bandits-carousel__dot" type="button" aria-label="Показать Кузю" aria-pressed="false"></button>
+            <button class="bandits-carousel__dot" type="button" aria-label="Показать Виталика" aria-pressed="false"></button>
+          </div>
         </div>
       </section>
 
@@ -70,7 +139,7 @@
         <div class="gallery-section__inner">
           <div class="section-heading">
             <p class="eyebrow">Глава 4 · Настоящие моменты</p>
-            <h2 id="gallery-title">Фотоистории Лучика и Кузи</h2>
+            <h2 id="gallery-title">Фотоистория бандитов</h2>
             <p class="gallery-section__lead">
               Фотографии из первых проектов собраны в одну живую главу. Выбирай тему —
               коллаж перестроится сам.
@@ -85,6 +154,9 @@
           </div>
 
           <div class="photo-grid" aria-live="polite">
+            <figure class="gallery-choice" aria-hidden="true">
+              <img src="assets/gallery/16-bandits-dialogue.png" alt="">
+            </figure>
             <figure class="photo photo--wide" data-category="walk"><img src="assets/gallery/01-luchik-forest.jpg" alt="Лучик среди бумажных ёлочек" loading="lazy"><figcaption>Маленький лес дома</figcaption></figure>
             <figure class="photo photo--tall" data-category="play"><img src="assets/gallery/02-friends-play.jpg" alt="Лучик и Кузя играют вместе" loading="lazy"><figcaption>Дружеская борьба</figcaption></figure>
             <figure class="photo" data-category="food"><img src="assets/gallery/03-cat-grass.jpg" alt="Кот рядом с выращенной травой" loading="lazy"><figcaption>Полезное угощение</figcaption></figure>
@@ -98,22 +170,45 @@
             <figure class="photo" data-category="play"><img src="assets/gallery/11-luchik-pot.jpg" alt="Лучик сидит в большой кастрюле" loading="lazy"><figcaption>Нашёл новое место</figcaption></figure>
             <figure class="photo" data-category="walk"><img src="assets/gallery/12-recovery.jpg" alt="Кот восстанавливается после лечения" loading="lazy"><figcaption>Снова готов к приключениям</figcaption></figure>
             <figure class="photo" data-category="food"><img src="assets/gallery/13-luchik-birthday.jpg" alt="Лучик в праздничном нагруднике" loading="lazy"><figcaption>Праздничное меню</figcaption></figure>
-            <figure class="photo" data-category="walk"><img src="assets/gallery/14-luchik-portrait.jpg" alt="Лучик с чёрной бабочкой" loading="lazy"><figcaption>Лучик готов выходить</figcaption></figure>
             <figure class="photo" data-category="walk"><img src="assets/gallery/15-kuzya-portrait.jpg" alt="Портрет Кузи" loading="lazy"><figcaption>Серьёзный Кузя</figcaption></figure>
-            <figure class="photo" data-category="play"><img src="assets/gallery/16-kuzya-bow.jpg" alt="Кузя с чёрной бабочкой" loading="lazy"><figcaption>Кузя при параде</figcaption></figure>
           </div>
 
           <article class="animation-slot" id="animation" aria-labelledby="animation-title">
-            <div>
-              <p class="eyebrow">Наша первая анимация</p>
-              <h3 id="animation-title">Лучик и Кузя оживают</h3>
-              <p>Небольшая сцена из будущего мультфильма о приключениях двух лучших друзей.</p>
+            <h3 id="animation-title">Анимационная история бандитов</h3>
+
+            <div class="animation-carousel" aria-label="Анимационные истории">
+              <button class="animation-carousel__arrow animation-carousel__arrow--prev" type="button" aria-label="Предыдущее видео">‹</button>
+
+              <div class="animation-carousel__viewport">
+                <div class="animation-carousel__track">
+                  <section class="animation-slide" aria-label="Знакомство Лучика и Кузи">
+                    <div class="animation-slot__screen">
+                      <button class="animation-play" type="button" data-video="assets/video/luchik-kuzya-animation.mp4" data-title="Знакомство Лучика и Кузи" aria-label="Смотреть знакомство Лучика и Кузи">
+                        <span aria-hidden="true">▶</span>
+                        <small>Смотреть</small>
+                      </button>
+                    </div>
+                    <h4>Знакомство Лучика и Кузи</h4>
+                  </section>
+
+                  <section class="animation-slide" aria-label="Пополнение в семье">
+                    <div class="animation-slot__screen animation-slot__screen--vitalik">
+                      <button class="animation-play" type="button" data-video="assets/video/vitalik-family-animation.mp4" data-title="Пополнение в семье" aria-label="Смотреть историю о пополнении в семье">
+                        <span aria-hidden="true">▶</span>
+                        <small>Смотреть</small>
+                      </button>
+                    </div>
+                    <h4>Пополнение в семье</h4>
+                  </section>
+                </div>
+              </div>
+
+              <button class="animation-carousel__arrow animation-carousel__arrow--next" type="button" aria-label="Следующее видео">›</button>
             </div>
-            <div class="animation-slot__screen">
-              <button class="animation-play" id="open-animation" type="button" aria-label="Открыть анимацию с Лучиком и Кузей">
-                <span aria-hidden="true">▶</span>
-                <small>Смотреть</small>
-              </button>
+
+            <div class="animation-carousel__dots" role="group" aria-label="Выбор видео">
+              <button class="animation-carousel__dot animation-carousel__dot--active" type="button" aria-label="Показать первое видео" aria-pressed="true"></button>
+              <button class="animation-carousel__dot" type="button" aria-label="Показать второе видео" aria-pressed="false"></button>
             </div>
           </article>
         </div>
@@ -128,16 +223,34 @@
 
     <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-dialog-title">
       <div class="video-dialog__header">
-        <h2 id="video-dialog-title">Лучик и Кузя оживают</h2>
+        <h2 id="video-dialog-title">Знакомство Лучика и Кузи</h2>
         <button class="video-dialog__close" type="button" aria-label="Закрыть видео">×</button>
       </div>
       <video id="story-video" controls playsinline preload="metadata">
-        <source src="assets/video/luchik-kuzya-animation.mp4" type="video/mp4">
         Ваш браузер не поддерживает воспроизведение видео.
       </video>
     </dialog>
 
     <footer>
+      <div class="footer-socials" aria-label="Мы в социальных сетях">
+        <a class="footer-socials__item" href="#instagram" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.25"></circle>
+            <circle class="footer-socials__dot" cx="17.4" cy="6.7" r="1"></circle>
+          </svg>
+        </a>
+        <a class="footer-socials__item" href="#telegram" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.6 4.1 17.8 19c-.2 1.1-.8 1.4-1.7.9l-4.3-3.2-2.1 2c-.2.2-.4.4-.9.4l.3-4.4 8-7.2c.4-.3-.1-.5-.5-.2l-9.9 6.2-4.2-1.3c-.9-.3-.9-.9.2-1.3L19 4.6c.8-.3 1.8.2 1.6-.5Z"></path>
+          </svg>
+        </a>
+        <a class="footer-socials__item" href="#vkontakte" target="_blank" rel="noopener noreferrer" title="ВКонтакте" aria-label="ВКонтакте">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.4 7.1h3.3c.2 0 .4.2.5.4.8 2.1 1.8 3.9 3 5.3.2.2.4.1.4-.2V8.5c-.1-.9-.5-1.2-.8-1.3V7h5.1c.4 0 .6.2.6.6v4.8c0 .4.2.5.4.3 1.2-1.3 2.2-3.2 2.9-5.2.1-.3.3-.4.6-.4h3.2c.5 0 .7.3.5.8-.8 1.8-1.8 3.4-3.1 4.9-.3.4-.3.6 0 .9 1.4 1.3 2.5 2.7 3.2 4.1.2.5 0 .8-.5.8h-3.6c-.3 0-.5-.1-.7-.4-.8-1.1-1.6-2.1-2.5-2.8-.2-.2-.4-.1-.4.3v2.4c0 .3-.2.5-.5.5h-1.5c-3 0-5.8-1.8-8-5.2-1.2-1.8-2-3.7-2.5-5.7-.1-.4.1-.6.4-.6Z"></path>
+          </svg>
+        </a>
+      </div>
       <p>Учебный проект о дружбе, аккуратном коде и внимании к деталям.</p>
     </footer>
   </body>
