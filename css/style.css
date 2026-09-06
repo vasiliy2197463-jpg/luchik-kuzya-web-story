@@ -437,17 +437,9 @@ h2 {
   gap: 14px;
 }
 
-/* Общий кадр с диалогом виден на любом экране. */
+/* Общий кадр с диалогом — только мобильная заставка до выбора фильтра. */
 .gallery-choice {
-  position: relative;
-  grid-column: 1 / -1;
-  display: block;
-  overflow: hidden;
-  height: clamp(360px, 48vw, 680px);
-  margin: 0;
-  border-radius: 26px;
-  background: var(--cream);
-  box-shadow: var(--shadow);
+  display: none;
 }
 
 .gallery-choice img {
@@ -1124,7 +1116,8 @@ footer p {
     grid-column: 1 / -1;
     display: block;
     overflow: hidden;
-    height: clamp(440px, 128vw, 720px);
+    height: auto;
+    aspect-ratio: 16 / 10;
     min-height: 0;
     margin: 0;
     border-radius: 26px;
@@ -1135,8 +1128,7 @@ footer p {
   .gallery-choice img {
     width: 100%;
     height: 100%;
-    position: absolute;
-    inset: 0;
+    position: static;
     display: block;
     object-fit: cover;
     opacity: 1;
