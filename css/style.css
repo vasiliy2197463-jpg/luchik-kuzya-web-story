@@ -437,10 +437,24 @@ h2 {
   gap: 14px;
 }
 
-/* Заставка выбора скрыта по умолчанию и появляется только на узком экране,
-   пока пользователь ещё не выбрал категорию фотографий. */
+/* Общий кадр с диалогом виден на любом экране. */
 .gallery-choice {
-  display: none;
+  position: relative;
+  grid-column: 1 / -1;
+  display: block;
+  overflow: hidden;
+  height: clamp(360px, 48vw, 680px);
+  margin: 0;
+  border-radius: 26px;
+  background: var(--cream);
+  box-shadow: var(--shadow);
+}
+
+.gallery-choice img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .photo {
@@ -1125,16 +1139,11 @@ footer p {
     inset: 0;
     display: block;
     object-fit: cover;
-    opacity: 0.84;
+    opacity: 1;
   }
 
   .gallery-choice::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    inset: 0 0 48%;
-    background: rgba(255, 246, 231, 0.18);
-    pointer-events: none;
+    content: none;
   }
 }
 
